@@ -4,18 +4,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      passsword: ''
     }
     this.onHandleChange = this.onHandleChange.bind(this);
   }
   onHandleChange(event) {
+    var target, name, value;
+    target = event.target;
+    name = target.name;
+    value = target.value;
     this.setState({
-      username : event.target.value
+      [name]:value
     });
   }
   onHandleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
+    
   }
   render() {
     return (
@@ -27,7 +33,8 @@ class App extends Component {
                 <form onSubmit={this.onHandleSubmit}>
                   <div className="form-group">
                     <label>Username</label>
-                    <input type="text" name="datainput" className="form-control" id="formlt" onChange={this.onHandleChange} placeholder="Input field"/>
+                    <input type="text" name="username" className="form-control" onChange={this.onHandleChange} placeholder="username ..."/>
+                    <input type="text" name="passsword" className="form-control" onChange={this.onHandleChange} placeholder="passsword ..."/>
                   </div>
                   <button type="submit" className="btn btn-primary">Save</button>&nbsp;
                   <button type="reset" className="btn btn-default">Reset</button>
