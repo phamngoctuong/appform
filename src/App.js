@@ -8,7 +8,8 @@ class App extends Component {
       passsword: '',
       select: 1,
       radio: 'yes',
-      textarea: 'textarea'
+      textarea: 'textarea',
+      checkbox: 'checkbox'
     }
     this.onHandleChange = this.onHandleChange.bind(this);
   }
@@ -16,7 +17,7 @@ class App extends Component {
     var target, name, value;
     target = event.target;
     name = target.name;
-    value = target.value;
+    value = target.name==='checkbox'? target.checked : target.value;
     this.setState({
       [name]:value
     });
@@ -52,6 +53,12 @@ class App extends Component {
                         <input type="radio" name="radio" value="no" onChange={this.onHandleChange}/>
                         no
                     </label>
+                  </div>                  
+                  <div className="checkbox">
+                      <label>
+                          <input type="checkbox" name="checkbox"  onChange={this.onHandleChange} />
+                          Checkbox
+                      </label>
                   </div>
                   <textarea name="textarea"  className="form-control" rows="3" onChange={this.onHandleChange}></textarea>
                   <button type="submit" className="btn btn-primary">Save</button>&nbsp;
