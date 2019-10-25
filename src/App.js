@@ -5,7 +5,10 @@ class App extends Component {
     super(props);
     this.state = {
       username: '',
-      passsword: ''
+      passsword: '',
+      select: 1,
+      radio: 'yes',
+      textarea: 'textarea'
     }
     this.onHandleChange = this.onHandleChange.bind(this);
   }
@@ -21,7 +24,6 @@ class App extends Component {
   onHandleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    
   }
   render() {
     return (
@@ -34,8 +36,24 @@ class App extends Component {
                   <div className="form-group">
                     <label>Username</label>
                     <input type="text" name="username" className="form-control" onChange={this.onHandleChange} placeholder="username ..."/>
-                    <input type="text" name="passsword" className="form-control" onChange={this.onHandleChange} placeholder="passsword ..."/>
+                    <input type="passsword" name="passsword" className="form-control" onChange={this.onHandleChange} placeholder="passsword ..."/>
                   </div>
+                  <select name="select" className="form-control" onChange={this.onHandleChange} defaultValue={1}>
+                    <option value="0">Nữ</option>
+                    <option value="1">Nam</option>
+                    <option value="2">Chưa biết</option>
+                  </select>
+                  <div className="radio">
+                    <label>
+                        <input type="radio" name="radio" value="yes" defaultChecked onChange={this.onHandleChange}/>
+                        yes
+                    </label>
+                    <label>
+                        <input type="radio" name="radio" value="no" onChange={this.onHandleChange}/>
+                        no
+                    </label>
+                  </div>
+                  <textarea name="textarea"  className="form-control" rows="3" onChange={this.onHandleChange}></textarea>
                   <button type="submit" className="btn btn-primary">Save</button>&nbsp;
                   <button type="reset" className="btn btn-default">Reset</button>
                 </form>
